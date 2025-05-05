@@ -58,6 +58,22 @@ source logenv/bin/activate
 ```bash
 pip install geoip2 jinja2 requests
 ```
+## 3️⃣ Programı Çalıştır
+
+```bash
+python3 log_analiz.py
+```
+Oluşturulan raporlar:
+
+- Masaüstü/guvenlik_raporu.html
+
+- Masaüstü/guvenlik_raporu.json
+
+## 4️⃣ Sanal Ortamdan Çıkmak İçin
+
+```bash
+deactivate
+```
 
 # 🌍 GeoIP Veritabanı
 - Kod ilk çalıştırıldığında GeoLite2-Country.mmdb dosyasını otomatik indirir.
