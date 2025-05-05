@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Güvenlik Log Raporu</title>
+  <style>
+    body { font-family: Arial; background: #f4f4f4; padding: 20px; }
+    h1, h2 { color: #2c3e50; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 30px; background: #fff; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background-color: #e3e3e3; }
+    tr:nth-child(even) { background: #f9f9f9; }
+    .kirmizi { color: red; font-weight: bold; }
+    .yesil { color: green; }
+    .flag { width: 16px; vertical-align: middle; margin-right: 5px; }
+  </style>
+</head>
+<body>
+  <h1>🛡️ Linux Sunucu Güvenlik Raporu</h1>
+  <p>Oluşturulma Tarihi: {{ tarih }}</p>
+
+  <h2>🚫 Başarısız SSH Girişleri</h2>
+  <table>
+    <tr><th>Tarih</th><th>Kullanıcı</th><th>IP</th><th>Ülke</th></tr>
+    {% for giris in basarisiz %}
+      <tr>
+        <td class="kirmizi">{{ giris.zaman }}</td>
+        <td>{{ giris.kullanici }}</td>
+        <td><a href="https://ipinfo.io/{{ giris.ip }}" target="_blank">{{ giris.ip }}</a></td>
+        <td>{% if giris.ulke_kod %}<img src="https://flagcdn.com/16x12/{{ giris.ulke_kod }}.png" class="flag">{% endif %}{{ giris.ulke_ad }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <h2>✅ Başarılı SSH Girişleri</h2>
+  <table>
+    <tr><th>Tarih</th><th>Kullanıcı</th><th>IP</th><th>Ülke</th></tr>
+    {% for giris in basarili %}
+      <tr>
+        <td class="yesil">{{ giris.zaman }}</td>
+        <td>{{ giris.kullanici }}</td>
+        <td><a href="https://ipinfo.io/{{ giris.ip }}" target="_blank">{{ giris.ip }}</a></td>
+        <td>{% if giris.ulke_kod %}<img src="https://flagcdn.com/16x12/{{ giris.ulke_kod }}.png" class="flag">{% endif %}{{ giris.ulke_ad }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <h2>🔥 Brute Force Tespit Edilen IP'ler</h2>
+  <table>
+    <tr><th>IP</th><th>Deneme Sayısı</th></tr>
+    {% for item in brute_ips %}
+      <tr>
+        <td><a href="https://ipinfo.io/{{ item.ip }}" target="_blank">{{ item.ip }}</a></td>
+        <td class="kirmizi">{{ item.sayi }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>
