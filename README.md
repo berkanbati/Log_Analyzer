@@ -44,6 +44,21 @@ python3 log_analiz.py
 ```
 Raporlar otomatik olarak masaüstüne (Masaüstü/Desktop klasörü) kaydedilir.
 
+## 2.Yöntem Kurulum ve Kullanım (Virtual Environment ile)
+1️⃣ Python Sanal Ortam Oluşturma
+```bash
+sudo apt update
+sudo apt install python3-venv -y
+python3 -m venv logenv
+source logenv/bin/activate
+```
+
+## 2️⃣ Gerekli Paketleri Kurma
+
+```bash
+pip install geoip2 jinja2 requests
+```
+
 # 🌍 GeoIP Veritabanı
 - Kod ilk çalıştırıldığında GeoLite2-Country.mmdb dosyasını otomatik indirir.
 - Eğer bağlantı kurulamazsa bu arşiv bağlantısı kullanılır.
