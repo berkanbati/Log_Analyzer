@@ -86,7 +86,6 @@ Alternatif olarak manuel olarak GeoLite2-Country.mmdb dosyasını masaüstüne k
 
 # 📌 Notlar
 - Sadece Linux/macOS sistemlerde çalışır.
-- Log dosyalarının okunabilmesi için sudo/root yetkisi gerekebilir.
 - Tarayıcıda saat dilimi algılanır, istenirse kullanıcı manuel de seçebilir.
 
 # 🤝 Katkı Sağlama
